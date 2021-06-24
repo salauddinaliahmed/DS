@@ -1,0 +1,59 @@
+The first chapter of exercises in the DS book. 
+
+1. Array contains 100 elements:
+Provide number of steps the following actions will take,
+
+a) Reading - Reading an element takes one(1) step (Technically it finds the starting point and then calculates the index,
+                to be read by adding the starting memory location)
+
+b) Searching for a value not contained within the array - 
+    - 100 elements, value not contained in the array. We only know this once the entire array is searched.
+    So, it takes 100 steps.
+
+c) Insertion at the beginning of the array:
+    - First we need to move nth element to the right by 1, then n-1th element to the free nth space and so on
+      Until we reach the first space, so thats 100. 
+      Then, insert a new value at the beginning, Thus, 100 + 1 = 101
+
+d) Insertion at the end of the array:
+    - This operation only takes 1 step (Technically 2 since we need to find the end of the array, which is already stored
+        as a size)
+
+e) Deletion at the beginning of the array.
+    - First we delete the element. 1 step (99 items remain)
+    - Then we move the 99 remaining items 1 step to the left. 
+    - Totally, this would take 100 steps.
+
+f) Deletion at the end of the array.
+    - This takes only one step. Since we know the size of the array, we just reach the last address and delete it and then 
+        update the size.
+
+--------------------------------------
+
+2. For 100 elements in the array-based SET (Does not allow duplicates).
+Provide the number of steps the following operations would take:
+
+a) Reading. - Similar to array 1 step.
+
+b) Searching - Similar to array, needs to search the entire list. 100
+
+c) Insertion - at the beginning, here we search if the value exists. So 100 steps for Searching + 100 steps for moving
+    elements to the right and then 1 step to insert.
+    200 + 1 = 201
+
+d) Insertion at the end of the set. This would require search - 100 steps and then insertion at the end, so 1 step
+    - In total it would need 101 steps.
+
+e) Deletion at the beginning of the set.
+    - This is the same as the array. This would take 1 step to delete and 99 steps move everything to the left.
+    - Total = 100 steps
+
+f) Deletion at the end of the set.
+    - Same as the array, it takes only 1 step. Reach the end and delete the element.
+
+-----------------------------------------
+
+3. If we need to search for all occurences of an element in a array, we would need to search through the entire array and check each element.
+    Thus, it would take N steps to search for all occurences of a certain item.
+
+ 
