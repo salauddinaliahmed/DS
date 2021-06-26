@@ -5,10 +5,11 @@ For this exercise, we will compare the running time for a
 3. Recursive binary search.
 """
 
-import time
+from time import time
+import timeit
 
-def linear_search(elem_list:list, search_for:int) -> None:
-    start = time.time()
+def linear_search(elem_list:list, search_for:int):
+    start = timeit.default_timer()
     found = False
     for ind, each_elem in enumerate(elem_list):
         if each_elem == search_for:
@@ -18,10 +19,9 @@ def linear_search(elem_list:list, search_for:int) -> None:
     if found:
         print(f"Element found at index: {ind}")
 
-    time_elapsed = time.time() - start
+    time_elapsed = timeit.default_timer() - start
     print(f"Time elapsed: {time_elapsed}")
     
     
-
-if __name__ == '___main__':
-    linear_search([1, 2, 3], 2)
+if __name__ == '__main__':
+    linear_search([x for x in range(10000)], 9999)
