@@ -48,3 +48,4 @@ if __name__=='__main__':
     print(better_sorted_list)
 
     print(f"Validation: {sorted_list == better_sorted_list}")
+    # O(n^2) is called quadratic.
