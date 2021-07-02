@@ -3,11 +3,11 @@ def search_dup(seq:list) -> bool:
     for i in seq:
         if existing_list[i] == 1:
             print("Has duplicate")
-            return False
+            return True
         else:
             existing_list[i] = 1
     print("No duplicates")
-    return True
+    return False
         
 
 if __name__ == '__main__':
