@@ -1,5 +1,3 @@
-# Implement bubble sort. 
-
 def bubble_sort(seq: list, seq_length, index:int = 0):
     if seq_length <= 1:
         return seq
@@ -16,13 +14,33 @@ def bubble_sort(seq: list, seq_length, index:int = 0):
 
 # Linear method shown in the book.
 def better_bubble_sort(seq):
+    """
+    In bubble sort we compare 
+    [4, 2, 3, 1]
+     |  |
+     then we swap, if we find that value at index[0] > index[1]
+    [2, 4, 3, 1]
+        |  | 
+     then we compare 4 with 3, 4 > 3,  we swap again
+    [2, 3, 4, 1]
+           |  |
+     then we swap 4 and 1, 
+    [2, 3, 1, 4]
+    By the end of the first pass through, the max value bubbles up to the right side of the array.
+    Then we can reduce the array size by 1. only using the array [2, 3, 1]
+    [2, 1, 3]
+    [1, 2, 3]
+    We break, when we do not have any more swaps form a walk through.
+    
+    """
     last_index = len(seq) - 1
     sorted = False
 
-    while not sorted:
-        # Set this to True incase the list does not need any swaps,
-        # This value will remain true.
-        sorted = True
+    # while not sorted:
+    #     # Set this to True incase the list does not need any swaps,
+    #     # This value will remain true.
+    #     sorted = True
+    for last_index in range(last_index, -1, -1):
         for ind in range(last_index):
             if seq[ind] > seq[ind+1]:
                 # Swap
