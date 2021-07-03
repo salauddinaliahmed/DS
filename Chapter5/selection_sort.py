@@ -1,19 +1,6 @@
 def selection_sort(array_list:list)->list:
     """
     Selection Sort:
-    
-    1. You set a flag to aid in swapping or not. Set it to false by default.
-    2. The start index starts with 0.
-    3. Create a while loop to loop until our start_index value is == the length of the array (Indicating we've reached the end of the array)
-       - Here we initialise a index_val (or lower value) to whatever value which is at start index.
-    4. Inside the while loop, we need to go through the whole array list again and compare with the first elem (start index) to see if we encounter any value
-       is smaller than the value at our index_val. (We use a different variable here since we store the index of the value which is smaller than the first value here.)
-    5. If we encounter something smaller than the value at the first index, we store the index value of the interger value. We set the do_sort flag to true to indicate
-       that we now have a value to swap.
-    6. Then we swap the index sorted with the start index.
-    7. At the end of each for loop, we find each smallest value and we place it at the beginning of the array.
-    8. We keep moving the starting point of the array since the previous for loop finishes placing the smallest value at the previous start_index.
-
     Theory:
     You compare all the values of the array with the first value, storing the index of any value which is smaller than our first value. 
     If we find such value, we swap it with the first value.
