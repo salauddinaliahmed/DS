@@ -39,23 +39,22 @@ def selection_sort(array_list:list)->list:
 
     """
     start_index = 0
-    while start_index < len(array_list):
-        do_sort = False
-        index_val = start_index
+        # while start_index < len(array_list):
+        #     do_sort = False
+        #     index_val = start_index
 
+    for start_index in range(0, len(array_list)-1):
+        lowest_val_index = start_index
         for _ in range(start_index, len(array_list)):
             # Do your loops
-            if array_list[index_val] > array_list[_]:
-                index_val = _
-                do_sort = True
-            
-        if do_sort:
-            array_list[start_index], array_list[index_val] = array_list[index_val], array_list[start_index]
+            if array_list[lowest_val_index] > array_list[_]:
+                lowest_val_index = _            
         
-        start_index += 1
+        if start_index != lowest_val_index:
+            array_list[start_index], array_list[lowest_val_index] = array_list[lowest_val_index], array_list[start_index]
 
     return array_list
 
 if __name__ == '__main__':
-    a = selection_sort([4, 3, 1, 5, 0, 2])
+    a = selection_sort([4, 3, 1, 5, 0, 2, -1])
     print(a)
