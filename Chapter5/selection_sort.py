@@ -45,3 +45,15 @@ def selection_sort(array_list:list)->list:
 if __name__ == '__main__':
     a = selection_sort([4, 3, 1, 5, 0, 2, -1])
     print(a)
+
+"""
+Exercise:
+
+1. 4n + 16 -> O(n)
+2. 2n^2 -> O(n^2)
+3. 2n -> O(n)
+4. 3n -> O(n^3)
+5. n/2 -> O(n^3)
+6. n*(n/2) -> O(n^2)
+
+"""
