@@ -42,7 +42,32 @@ def book_insertion(arr: list) -> list:
                 break
 
         # Now, we need to place back our temp value into empty position.
-        # We do a position+1 here since 
+        # We do a position+1 here since position starts with left (or looks/compares one left)
+        # If we moved any element to the right, or not, there will always be one open space after position.
+        # Due to the movement or just selection
+        """
+        Example:
+            p - Position 
+                  3
+            1.[1,   , 2, 4]
+               |
+               p
+            Empty space at position + 1.
+
+                     3
+            2. [1, 5,  , 4]
+                   |
+                   p
+                We compare 3 with 5, since 5 is greater we move 5.
+                3 - is hanging up
+                [1,  , 5, 4]
+                 |
+                 p (one left since we already compared 5). Observe here that the free space is always on the right side of the position.
+                 This is inately because we are moving right and comparing left. 
+                 
+                position is now
+             
+        """
         arr[position+1] = temp_value
     return arr
 
@@ -58,3 +83,5 @@ if __name__ == '__main__':
     validation_array = sorted(l)
     print('------------------')
     print(f'Validation: {validation_array == sorted_array == book_sort}')
+    
+    
