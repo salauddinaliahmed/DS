@@ -6,7 +6,7 @@ def timer(foo):
     def _inner(*args, **kwargs):
         start_time = timeit.default_timer()
         x = foo(*args, **kwargs)
-        print(f"Time taken for execution: {timeit.default_timer() - start_time}")
+        print(f"Time taken for execution by {foo.__name__}: {timeit.default_timer() - start_time}")
         return x
     return _inner
 
@@ -25,15 +25,36 @@ def insertion_sort(arr: list) -> list:
 
     return arr
 
+@timer
+def book_insertion(arr: list) -> list:
+    print("Before sorting", arr)
+    for i in range(1, len(arr)):
+        temp_value = arr[i]
+        # Start from the left value
+        position = i - 1
+        
+        while position >= 0:
+            if arr[position] > temp_value:
+                arr[position+1] = arr[position]
+                # Since we need to move left.
+                position -= 1
+            else:
+                break
+
+        # Now, we need to place back our temp value into empty position.
+        # We do a position+1 here since 
+        arr[position+1] = temp_value
+    return arr
 
 if __name__ == '__main__':
     import random
     l = [random.randint(0,500) for _ in range(50)]
-    l = [15, 1, 0, -1, 13]
+    t = l.copy()
     print(f"Initial array: {l}")
 
-    sorted_array = insertion_sort(l)
-    print(sorted_array)
+    book_sort = book_insertion(l)
+    sorted_array = insertion_sort(t)
 
+    validation_array = sorted(l)
     print('------------------')
-    print(f'Validation: {sorted(l) == sorted_array}')
+    print(f'Validation: {validation_array == sorted_array == book_sort}')
