@@ -121,3 +121,19 @@ if __name__ == '__main__':
     print(f'Validation: {validation_array == sorted_array == book_sort}')
     
     
+"""
+Exercise 6:
+1. Algo takes 3N^2 + 2N + 1 -> O(n^2)
+2. N + logN -> O(N)
+3. Summing up to 10 from 2 lists: Best Case: O(1) ; Worst Case: O(N^2); Average Case: O(N^2/2)
+4. Find if a string contains capital x, We dont need to look further if we encounter it once.
+    - With the below implementation: 
+        Worst Case: O(N)
+        Best Case: O(1)
+        Average Case: O(N/2)
+"""
+def findX(string: str) ->bool:
+    for _ in string:
+        if _ == 'X':
+            return True
+    return False
