@@ -12,7 +12,43 @@ def timer(foo):
 
 @timer
 def insertion_sort(arr: list) -> list:
+    """
+    Insertion sort, you start with the index 1, pick the value up from the array,
+    compare it with whatever is on the left side of the picked index,
+    If the value is greater than the value at picked index, we move the value to the right. (Basically shift right, or place it in the value of picked index)
+    If the value is lower, we break the pass through and increment the index by 1, so on until we reach the end of the array.
 
+    Eg: [1, 4, 2, 3]
+
+    Index 1 picked.
+        4
+    [1,  , 2, 3]
+     |
+    Compare with left. (4>1, so we end the first walk through)
+    Index 2 picked
+            2
+    [ 1, 4,  , 3]
+         |
+         We look left.
+    2 > 4, False, here we encountered a value greater than the index value so we move it right.
+        2
+    [1,   ,4, 3] 
+    We then compare 2 with 1, since 2 is greater we end the pass through. We place 2 in the empty slot
+    Then we look at index 3
+          4  
+    [1, 2,  , 3]
+    We look left, 4 > 2, so we end this pass through.
+    Index 3
+              3
+    [1, 2, 4,  ]
+    We look left, 3>4, False, so we move 4 to the right.
+    
+           3
+    [1, 2,  , 4]
+    Then we check 3 with 2, Since 3 is greater than 2, we place 3 down in the empty slot.
+    Now we have walked through the whole list and its sorted.
+    [1, 2, 3, 4]
+    """
     for ind in range(1, len(arr)):
         for look_left in range(ind-1, -1, -1):
             l = arr[look_left]
