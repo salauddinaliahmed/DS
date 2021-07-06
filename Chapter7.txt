@@ -2,8 +2,8 @@ Exercise:
 
 1. O(n)
 2. O(n+m) -> O(n) 
-3. O(N) 
-4. 
+3. O(N) Wrong O(N*M) 
+4.  This apparently takes O(M*N) since for each needle size we run through the whole haystack
 5. O(log n)
 
 1 , 2, 3, 4, 5
