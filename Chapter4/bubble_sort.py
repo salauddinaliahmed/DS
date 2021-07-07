@@ -36,11 +36,11 @@ def better_bubble_sort(seq):
     last_index = len(seq) - 1
     sorted = False
 
-    # while not sorted:
-    #     # Set this to True incase the list does not need any swaps,
-    #     # This value will remain true.
-    #     sorted = True
-    for last_index in range(last_index, -1, -1):
+    while not sorted:
+        # Set this to True incase the list does not need any swaps,
+        # This value will remain true.
+        sorted = True
+
         for ind in range(last_index):
             if seq[ind] > seq[ind+1]:
                 # Swap
