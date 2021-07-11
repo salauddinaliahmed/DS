@@ -25,11 +25,11 @@ class SimpleLinter:
                 last_brace_in_stack = self.s.pop()
 
                 if not last_brace_in_stack:
-                    print(f"Opening brace is missing for: {_}")
+                    print(f"Closing brace is missing for: {_}")
                     return
 
                 if last_brace_in_stack != self.braces[_]:
-                    print(f"The brace {_} does not match with the closing brace: {self.braces[_]}") 
+                    print(f"The brace {_} does not have an opening brace: {self.braces[_]}") 
                     return
 
 
@@ -41,7 +41,7 @@ class SimpleLinter:
         print("No errors in code!")
 
 if __name__ == "__main__":
-    code = 'function lala(){var x=5; console.log("Hello World");}'
+    code = 'function lala(){var x=5; console.log("Hello World";}'
     SimpleLinter(code)
 
 
