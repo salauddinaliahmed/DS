@@ -5,10 +5,10 @@ class SimpleLinter:
         self.code = code
         self.s = Stacks.Stack()
         self.braces = {
-            '}':"{",
-            ']':"[",
-            ')':'(',
-            '>':'<'
+            '{':"}",
+            '[':"]",
+            '(':')',
+            '<':'>'
         }
         self.code_stack = self._create_stack()
 
@@ -16,13 +16,15 @@ class SimpleLinter:
         all_open_braces = list(self.braces.keys())
         all_open_braces.extend(self.braces.values())
         all_braces = [x for x in self.code if x in all_open_braces]
-
+        print(f"All braces: {all}")
         for _ in all_braces:
             if _ in list(self.braces.values()):
                 self.s.push(_)
+                print(self.s)
             
             else:
                 last_brace_in_stack = self.s.pop()
+                print(f"Last: {last_brace_in_stack}")
 
                 if not last_brace_in_stack:
                     print(f"Closing brace is missing for: {_}")
@@ -43,7 +45,3 @@ class SimpleLinter:
 if __name__ == "__main__":
     code = 'function lala(){var x=5; console.log("Hello World";}'
     SimpleLinter(code)
-
-
-
-        
