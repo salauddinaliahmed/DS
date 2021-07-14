@@ -16,6 +16,9 @@ class Queue:
     def __repr__(self) -> str:
         return f"Queue: {self.q}"
 
+    def __len__(self) -> int:
+        return len(self.q)
+
     def read(self):
         print(self.q[0])
 
@@ -26,6 +29,7 @@ if __name__=='__main__':
         queue.enqueue(_)
     
     print(queue)
+    print(len(queue))
 
     for _ in range(5, 9):
         queue.dequeue()
