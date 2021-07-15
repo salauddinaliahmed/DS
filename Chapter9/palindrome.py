@@ -14,3 +14,4 @@ def palindrome(word) -> bool:
 
 if __name__ == '__main__':
     print(palindrome('boob'))
+    print(palindrome('lafor'))
