@@ -1,7 +1,11 @@
 import Queues
+"""
+Excerise 9, completed. 
+"""
 
 class PrinterQ:
     def __init__(self) -> None:
+        
         self.q = Queues.Queue()
     
     def add_job(self, job):
