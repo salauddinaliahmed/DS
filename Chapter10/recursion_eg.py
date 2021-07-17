@@ -11,7 +11,43 @@ def fact(num:int)->None:
     return num * fact(num-1)
 
 
+def dir_parser(dirs)->None:
+    """Write a function that parses through the directories at arbitrary levels (recursive)"""
+    pass
+
+
+def only_numbers(arr)->None:
+    if isinstance(arr, int):
+        print(arr)
+        return
+
+    for each_item in arr:    
+        only_numbers(each_item)
+
+
+def better_only_numbers(arr)-> None:
+    for each_item in arr:
+        if isinstance(each_item, list):
+            better_only_numbers(each_item)
+        else:
+            print(each_item)
+
+
+
+def summ(low, high):
+    if high <= low:
+        return 1
+    return high + summ(low, high-1)
+
+
 if __name__=='__main__':
+    dirs = ['a', ['b', 'c'], 'e', ['f', 'g']]
     #rec_ex(10)
-    x = fact(5)
-    print(x)
+    # x = fact(5)
+    # print(x)
+    # y = summ(1, 10)
+    # print(y)
+    ar = [1, 2, [3, 4, 5], [6, 4, [3, 2, 2, [1, 4, 4, 7], [2, 66, 6, 9, [1, 3]]]], 3]
+    only_numbers(ar)
+    print('_'*10)
+    better_only_numbers(ar)
