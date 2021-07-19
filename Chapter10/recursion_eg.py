@@ -40,6 +40,13 @@ def summ(low, high):
     return high + summ(low, high-1)
 
 
+def arr_doubler(arr, i=0)-> list:
+    if i == len(arr):
+        return arr
+    arr[i] = arr[i]*arr[i]
+    return arr_doubler(arr, i=i+1)
+
+
 if __name__=='__main__':
     dirs = ['a', ['b', 'c'], 'e', ['f', 'g']]
     #rec_ex(10)
@@ -47,7 +54,10 @@ if __name__=='__main__':
     # print(x)
     # y = summ(1, 10)
     # print(y)
-    ar = [1, 2, [3, 4, 5], [6, 4, [3, 2, 2, [1, 4, 4, 7], [2, 66, 6, 9, [1, 3]]]], 3]
-    only_numbers(ar)
-    print('_'*10)
-    better_only_numbers(ar)
+    # ar = [1, 2, [3, 4, 5], [6, 4, [3, 2, 2, [1, 4, 4, 7], [2, 66, 6, 9, [1, 3]]]], 3]
+    # only_numbers(ar)
+    # print('_'*10)
+    # better_only_numbers(ar)
+    arr = [1, 2, 3, 4, 5]
+    x = arr_doubler(arr)
+    print(x)
