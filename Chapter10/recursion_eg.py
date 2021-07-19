@@ -42,10 +42,15 @@ def summ(low, high):
 
 def arr_doubler(arr, i=0)-> list:
     if i == len(arr):
-        return arr
+        return
     arr[i] *= 2
-    return arr_doubler(arr, i=i+1)
+    arr_doubler(arr, i=i+1)
 
+# Factorial top down
+def fact(n, i=1, product=1):
+    if i > n:
+        return product
+    return fact(n, i+1, product=product * i)
 
 if __name__=='__main__':
     dirs = ['a', ['b', 'c'], 'e', ['f', 'g']]
@@ -59,5 +64,7 @@ if __name__=='__main__':
     # print('_'*10)
     # better_only_numbers(ar)
     arr = [1, 2, 3, 4, 5]
-    x = arr_doubler(arr)
-    print(x)
+    arr_doubler(arr)
+    print(arr)
+    t = fact(5)
+    print(t)
