@@ -43,7 +43,7 @@ def summ(low, high):
 def arr_doubler(arr, i=0)-> list:
     if i == len(arr):
         return arr
-    arr[i] = arr[i]*arr[i]
+    arr[i] *= 2
     return arr_doubler(arr, i=i+1)
 
 
