@@ -52,6 +52,12 @@ def fact(n, i=1, product=1):
         return product
     return fact(n, i+1, product=product * i)
 
+def arr_sum(arr):
+    if len(arr) == 0:
+        return 0
+    return arr[-1] + arr_sum(arr[:-1])
+
+
 if __name__=='__main__':
     dirs = ['a', ['b', 'c'], 'e', ['f', 'g']]
     #rec_ex(10)
@@ -67,4 +73,8 @@ if __name__=='__main__':
     arr_doubler(arr)
     print(arr)
     t = fact(5)
+    print(t)
+    print("-"*10)
+    tar = [1, 2, 3, 4, 5]
+    t = arr_sum(tar)
     print(t)
