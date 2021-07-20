@@ -57,6 +57,10 @@ def arr_sum(arr):
         return 0
     return arr[-1] + arr_sum(arr[:-1])
 
+def str_rev(st):
+    if len(st)==1:
+        return st[0]
+    return st[-1] + str_rev(st[0:-1])
 
 if __name__=='__main__':
     dirs = ['a', ['b', 'c'], 'e', ['f', 'g']]
@@ -78,3 +82,5 @@ if __name__=='__main__':
     tar = [1, 2, 3, 4, 5]
     t = arr_sum(tar)
     print(t)
+    vol = "badday"
+    print(str_rev(vol))
