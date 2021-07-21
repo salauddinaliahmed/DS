@@ -62,6 +62,22 @@ def str_rev(st):
         return st[0]
     return st[-1] + str_rev(st[0:-1])
 
+def str_rev2(st):
+    if len(st)==1:
+        return st[0]
+    return str_rev2(st[1:]) + st[0]
+
+
+def count_xs(st):
+    if len(st) == 0:
+        return 0
+    else:
+        if st[0] == 'x':
+            return 1 + count_xs(st[1:])
+        else:
+            return count_xs(st[1:])
+
+
 if __name__=='__main__':
     dirs = ['a', ['b', 'c'], 'e', ['f', 'g']]
     #rec_ex(10)
@@ -82,5 +98,10 @@ if __name__=='__main__':
     tar = [1, 2, 3, 4, 5]
     t = arr_sum(tar)
     print(t)
-    vol = "badday"
+    vol = "abcde"
     print(str_rev(vol))
+    print("----"*10)
+    print(str_rev2(vol))
+
+    st = 'ssxxxxxxxb'
+    print(count_xs(st))
