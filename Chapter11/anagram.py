@@ -15,5 +15,5 @@ def anagram(s):
     return all_anagrams
 
 if __name__ == '__main__':
-    word = 'abcd'
+    word = 'abc'
     print(anagram(word))
