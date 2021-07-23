@@ -35,9 +35,17 @@ def q4_book_index(s):
     return q4_book_index(s[1:]) + 1
 
 
+def q5_unique_paths(r,c):
+    if r == 1 or c == 1:
+        return 1
+    
+    return q5_unique_paths(r-1, c) + q5_unique_paths(r, c-1)
+
+
 if __name__ == '__main__':
     # print(q1_count_elems(['a', 'av', 'asd']))
     # print(q2_even_nos([0, 1, 2, 3, 4, 6]))
     print(q3_triangular_nos(7))
     print(q4_index_x('sst'))
     print(q4_book_index('abcdefghijklmnopqrstuvwxyz'))
+    print(q5_unique_paths(3,7))
