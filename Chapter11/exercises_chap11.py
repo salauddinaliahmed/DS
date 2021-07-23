@@ -22,17 +22,22 @@ def q3_triangular_nos(n):
     return n + q3_triangular_nos(n-1)
 
 def q4_index_x(s, count=0):
-    if s[0] == 'x':
-        return count
-    
     if len(s) == 0: 
         return None
-
+    
+    if s[0] == 'x':
+        return count
     return q4_index_x(s[1:], count=count+1) 
+
+def q4_book_index(s):
+    if s[0] == 'x':
+        return 0
+    return q4_book_index(s[1:]) + 1
 
 
 if __name__ == '__main__':
     # print(q1_count_elems(['a', 'av', 'asd']))
     # print(q2_even_nos([0, 1, 2, 3, 4, 6]))
     print(q3_triangular_nos(7))
-    print(q4_index_x('axb'))
+    print(q4_index_x('sst'))
+    print(q4_book_index('abcdefghijklmnopqrstuvwxyz'))
