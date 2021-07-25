@@ -48,6 +48,12 @@ def fib_loop(n):
 
 def book_fib_loop(n):
     # This is considered bottom up dynamic programming?
+    """
+    Going bottom up is a form of dynamic programming.
+    It constitutes of 2 things:
+    1. Memoization
+    2. Bottom up approach. (Can also be iterative.)
+    """
     a = 0
     b = 1
     if n == 0:
