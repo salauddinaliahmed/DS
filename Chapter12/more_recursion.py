@@ -46,6 +46,21 @@ def fib_loop(n):
     
     return i
 
+def book_fib_loop(n):
+    # This is considered bottom up dynamic programming?
+    a = 0
+    b = 1
+    if n == 0:
+        return 0
+    for _ in range(1, n):
+        temp = a
+        a = b
+        b = temp + a
+    
+    return b
+
+
+
 if __name__ == '__main__':
     print(bad_recursion_max([1, 2, 3, 4]))
     print("_"*10)
@@ -54,3 +69,4 @@ if __name__ == '__main__':
     print('_'*5)
     print(fib_with_memo(10, {}))
     print("Iterative: ", fib_loop(10))
+    print("Iterative Book method: ", book_fib_loop(10))
