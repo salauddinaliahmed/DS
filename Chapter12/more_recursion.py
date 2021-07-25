@@ -38,6 +38,14 @@ def fib_with_memo(n, memo=dict()):
 
     return memo[n]
 
+
+def fib_loop(n):
+    i = 0
+    for _ in range(n+1):
+        i += _
+    
+    return i
+
 if __name__ == '__main__':
     print(bad_recursion_max([1, 2, 3, 4]))
     print("_"*10)
@@ -45,3 +53,4 @@ if __name__ == '__main__':
     print(fib(10))
     print('_'*5)
     print(fib_with_memo(10, {}))
+    print("Iterative: ", fib_loop(10))
