@@ -52,7 +52,7 @@ def book_fib_loop(n):
     Going bottom up is a form of dynamic programming.
     It constitutes of 2 things:
     1. Memoization
-    2. Bottom up approach. (Can also be iterative.)
+    2. Bottom up approach. (Can also be)
     """
     a = 0
     b = 1
