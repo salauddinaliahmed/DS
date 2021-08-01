@@ -5,12 +5,30 @@ class QuickSort:
 
   def partition(self, left, right) -> int:
     self.count += 1
-    return 6
+    pivot = right
+    right = right-1
+
+    while True:
+
+      while self.array[left] < self.array[pivot]:
+        left += 1
+      
+      while self.array[right] > self.array[pivot]:
+        right -= 1
+
+      if left >= right:
+        break
+      
+      else:
+        self.array[left], self.array[right] = self.array[right], self.array[left]
+
+
+    self.array[left], self.array[pivot] = self.array[pivot], self.array[left]
+    return left
 
   def _do_quick_sort(self, left, right):
     self.count += 1
-    # Wrong condition
-    if right - left >= 0:
+    if right - left <= 0:
       return
     
     pivot = self.partition(left, right)
