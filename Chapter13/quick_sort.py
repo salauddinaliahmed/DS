@@ -56,7 +56,7 @@ def pivot_compare(left_pointer, right_pointer):
 
 def quick_sort(left, right):
   if right - left <= 0:
-    return arr
+    return
   
   pivot = pivot_compare(left, right)
 
