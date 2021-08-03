@@ -67,6 +67,12 @@ class QuickSort:
     return self._quick_select(kth_element, 0, len(self.array)-1)
 
 
+def contains_duplicates(arr):
+  for _ in range(len(arr)):
+    if _+1 <= len(arr)-1:
+      if arr[_] == arr[_+1]:
+        return True
+  return False
 
 if __name__ == '__main__':
   # arr = [0,5,2,1,6,3]
@@ -76,8 +82,14 @@ if __name__ == '__main__':
   # print("\n")
   # print(f"Total steps taken for an array of size {len(arr)} is {qs.count}")
 
-  qselect = [0, 50, 20, 10, 60, 30]
-  qsec = QuickSort(qselect)
-  ith_val = 2
-  print(f"Quick Select, {ith_val+1}nd value: {qsec.quickselect(ith_val)}")
-  print(f"Total steps taken for an array of size {len(qselect)} is {qsec.count}")
+  # qselect = [0, 50, 20, 10, 60, 30]
+  # qsec = QuickSort(qselect)
+  # ith_val = 2
+  # print(f"Quick Select, {ith_val+1}nd value: {qsec.quickselect(ith_val)}")
+  # print(f"Total steps taken for an array of size {len(qselect)} is {qsec.count}")
+
+
+  arr2 = [5, 2, 4, 6, 1, 2]
+  qs = QuickSort(arr2)
+  sorted_arr = qs.quick_sort()
+  print(f"Contains duplicates: {contains_duplicates(sorted_arr)}")
