@@ -88,6 +88,37 @@ def question2_missing(arr):
   # Print
   
 
+def q3_greatest_number(arr):
+  def _first():
+    """I am O(N^2)"""
+    greatest_value = 0
+    for i in arr:
+      greatest_value = True
+      for j in arr[1:]:
+        if j>i:
+          greatest_value = False
+    
+      if greatest_value:
+        return i
+    
+  def _second():
+    """I am O(NlogN)"""
+    sorted_arr = QuickSort(arr)
+    return sorted_arr.quick_sort()[-1]
+
+
+  def _third():
+    """I am O(N)"""
+    previous_greatest = 0
+    for _ in arr:
+      if _ > previous_greatest:
+        previous_greatest = _
+    
+    return previous_greatest
+
+  return _first(), _second(), _third()
+
+
 if __name__ == '__main__':
   # arr = [0,5,2,1,6,3]
   # print(f"Array before sorting: {arr}")
@@ -108,3 +139,5 @@ if __name__ == '__main__':
   print(f"Contains duplicates: {contains_duplicates(sorted_arr)}")
   print(f"Answer to question 1 Chapter 13: {question1_product(sorted_arr)}")
   print(f"Answer to question 2 Chapter 13: {question2_missing(sorted_arr)}")
+
+  print(f"Third question: {q3_greatest_number([1, 4, 6, 2, 3])}")
