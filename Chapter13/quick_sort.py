@@ -73,6 +73,21 @@ def contains_duplicates(arr):
       return True
   return False
 
+# Question 1:
+def question1_product(arr):
+  *_, a, b, c = arr
+  return a*b*c
+
+# Question 2:
+def question2_missing(arr):
+  for _ in range(len(arr)-1):
+    if arr[_+1] - arr[_] > 1:
+      print(f'{(len(arr) * (len(arr)+1)) / 2 - sum(arr)}')
+      return arr[_] + 1
+
+  # Print
+  
+
 if __name__ == '__main__':
   # arr = [0,5,2,1,6,3]
   # print(f"Array before sorting: {arr}")
@@ -86,9 +101,10 @@ if __name__ == '__main__':
   # ith_val = 2
   # print(f"Quick Select, {ith_val+1}nd value: {qsec.quickselect(ith_val)}")
   # print(f"Total steps taken for an array of size {len(qselect)} is {qsec.count}")
-
-
   arr2 = [5, 2, 4, 6, 1, 2, 2 ]
+  arr2 = [0, 1, 2, 4, 5]
   qs = QuickSort(arr2)
   sorted_arr = qs.quick_sort()
   print(f"Contains duplicates: {contains_duplicates(sorted_arr)}")
+  print(f"Answer to question 1 Chapter 13: {question1_product(sorted_arr)}")
+  print(f"Answer to question 2 Chapter 13: {question2_missing(sorted_arr)}")
