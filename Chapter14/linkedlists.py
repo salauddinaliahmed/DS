@@ -18,6 +18,19 @@ class LinkedList:
             output += str(current_node.data) + ', '
         return output
 
+    def _goto_node(self, ind):
+        current_index = 0
+        current_node = self.first_node
+        while current_index <= ind:
+            if current_node.next_node:
+                current_index += 1
+                current_node = current_node.next_node
+            else:
+                print("No node at that index.")
+                return False
+        return current_node
+
+
     # insert method
     def insert(self, val, ind=0):
         current_node = self.first_node
@@ -28,13 +41,7 @@ class LinkedList:
             current_node.next_node = Node(val)
         
         else:
-            while current_index <= ind-1:
-                if current_node.next_node:
-                    current_index += 1
-                    current_node = current_node.next_node
-                else:
-                    print("No node at that index.")
-                    return
+            current_node = self._goto_node(ind-1)
 
             next_node = current_node.next_node
             new_node = Node(val)
@@ -45,24 +52,19 @@ class LinkedList:
 
     # Read at index:
     def read(self, ind):
-        current_index = 0
-        current_node = self.first_node
-        while current_index <= ind:
-            current_index += 1
-            current_node = current_node.next_node
-        
-        if current_node.data:
-            return current_node.data
-        
-        else:
-            print("No element at that index.")
+        return self._goto_node(ind)
 
     # Search
     def search(self, val):
         pass
 
     def delete(self, ind):
-        pass
+        prev_node = self._goto_node(ind-1)
+        delete_node = prev_node.next_node
+        next_node = prev_node.next_node.next_node
+
+        prev_node.next_node = next_node
+        delete_node.next_node = None
 
 
 if __name__ == '__main__':
@@ -72,4 +74,7 @@ if __name__ == '__main__':
         ll.insert(_)
     print(ll)
     ll.insert(5, 2)
+    print(ll)
+    ll.delete(1)
+    print("After delete")
     print(ll)
