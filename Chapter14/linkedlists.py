@@ -33,12 +33,26 @@ class LinkedList:
         return current_node
 
     # insert method
-    def insert(self, val, ind=0):
+    def insert(self, val, ind=0, last=False):
         # If the first node is empty and there is no next node. 
         if self.first_node.data == None and self.first_node.next_node == None:
             self.first_node.data = val
             return
-        
+
+        if last:
+            current_node = self.first_node
+            while current_node:
+                previous_node = current_node
+                current_node = current_node.next_node
+            previous_node.next_node = Node(val)
+            return
+
+        if ind == 0:
+            current_node = self.first_node
+            self.first_node = Node(val)
+            self.first_node.next_node=current_node
+            return 
+
         # Check if index was provided.
         if ind:
             previous_node = self._goto_node(ind)
@@ -48,11 +62,6 @@ class LinkedList:
             previous_node.next_node = new_node
             return
         
-        current_node = self.first_node
-        while current_node:
-            previous_node = current_node
-            current_node = current_node.next_node
-        previous_node.next_node = Node(val)
 
 
     # Read at index:
@@ -76,7 +85,6 @@ class LinkedList:
     def delete(self, ind):
         print(f"Index to delete: {ind}")
         prev_node = self._goto_node(ind-1)
-        print(prev_node.data)
         delete_node = prev_node.next_node
         print(f"Delete node data: {delete_node.data}")
         next_node = prev_node.next_node.next_node
@@ -89,9 +97,9 @@ if __name__ == '__main__':
     ll = LinkedList()
     ll.insert(1)
     for _ in range(5):
-        ll.insert(_)
+        ll.insert(_, last=True)
     print(ll)
-    ll.insert(5, 2)
+    ll.insert(5, 0)
     print(ll)
     ll.delete(1)
     print("After delete")
