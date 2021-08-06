@@ -13,23 +13,24 @@ class LinkedList:
     def __str__(self) -> str:
         current_node = self.first_node
         output = ''
+        count = 0
         while current_node:
-            output += str(current_node.data) + ', '
+            output += str(count) + ' : ' + str(current_node.data) + ', '
             current_node = current_node.next_node
+            count += 1
         return output
 
     def _goto_node(self, ind):
         current_index = 0
         current_node = self.first_node
-        while current_index <= ind:
+        while current_index < ind:
             if current_node.next_node:
-                current_index += 1
                 current_node = current_node.next_node
             else:
                 print("No node at that index.")
                 return False
+            current_index += 1
         return current_node
-
 
     # insert method
     def insert(self, val, ind=0):
@@ -40,7 +41,7 @@ class LinkedList:
         
         # Check if index was provided.
         if ind:
-            previous_node = self._goto_node(ind-1)
+            previous_node = self._goto_node(ind)
             new_node = Node(val)
             new_next_node = previous_node.next_node
             new_node.next_node = new_next_node
@@ -73,9 +74,11 @@ class LinkedList:
         print("Element not found.")
 
     def delete(self, ind):
+        print(f"Index to delete: {ind}")
         prev_node = self._goto_node(ind-1)
+        print(prev_node.data)
         delete_node = prev_node.next_node
-        print(f"Node to delete: {delete_node.data}")
+        print(f"Delete node data: {delete_node.data}")
         next_node = prev_node.next_node.next_node
 
         prev_node.next_node = next_node
