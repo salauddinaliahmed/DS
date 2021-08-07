@@ -55,7 +55,7 @@ class LinkedList:
 
         # Check if index was provided.
         if ind:
-            previous_node = self._goto_node(ind)
+            previous_node = self._goto_node(ind-1)
             new_node = Node(val)
             new_next_node = previous_node.next_node
             new_node.next_node = new_next_node
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     for _ in range(5):
         ll.insert(_, last=True)
     print(ll)
-    ll.insert(5, 0)
+    ll.insert(5, 2)
     print(ll)
     ll.delete(1)
     print("After delete")
