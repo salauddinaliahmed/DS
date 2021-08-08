@@ -9,6 +9,7 @@ class Node:
 class DoubleLinkedList:
     def __init__(self, data=None) -> None:        
         self.first_node = Node(data)
+        self.last_node = Node(data)
     
     def __str__(self):
         current_node = self.first_node
@@ -17,6 +18,11 @@ class DoubleLinkedList:
             current_node = current_node.right
             output += f'{str(current_node.data)}, '
         return output
+
+    def print_reverse(self):
+        current_node = self.first_node
+        while self.r
+
 
     def insert(self, data):
         current_node = self.first_node
