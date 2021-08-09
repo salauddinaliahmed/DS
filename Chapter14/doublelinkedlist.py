@@ -21,8 +21,7 @@ class DoubleLinkedList:
 
     def print_reverse(self):
         current_node = self.first_node
-        while self.r
-
+        pass
 
     def insert(self, data):
         current_node = self.first_node
