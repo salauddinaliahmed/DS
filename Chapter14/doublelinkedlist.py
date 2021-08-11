@@ -18,24 +18,26 @@ class DoubleLinkedList:
     def __str__(self):
         current_node = self.first_node
         output = f"{self.first_node.data}, " if self.first_node.data else ''
-        while current_node.right:
-            current_node = current_node.right
-            output += f'{str(current_node.data)}, '
+        while current_node:
+            if hasattr(current_node, 'data'):
+                output += f'{str(current_node.data)}, '
+                current_node = current_node.right    
         return output
 
     def print_reverse(self):
         current_node = self.last_node
         output = ''
-        while current_node.left:
-            output += str(current_node.data) + ', '
-            current_node = current_node.left
-        output += str(self.first_node.data)
+        while current_node:
+            if hasattr(current_node, 'data'):
+                output += str(current_node.data) + ', '
+                current_node = current_node.left
         print (output)
 
     def insert(self, data):
         current_node = self.first_node
         if self.first_node.data == None:
             self.first_node.data = data
+            self.last_node = self.first_node
         else:
             while current_node.right:
                 current_node = current_node.right
@@ -58,7 +60,7 @@ class DoubleLinkedList:
 
 if __name__ == '__main__':
     dd = DoubleLinkedList()
-    dd.insert(10)
+    dd.insert(10)   
     dd.insert(40)
     dd.insert(50)
     print(dd)
