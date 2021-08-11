@@ -1,3 +1,6 @@
+from typing import ClassVar
+
+
 class Node:
     def __init__(self, data=None) -> None:
         self.data = None
@@ -13,11 +16,9 @@ class LinkedList:
     def __str__(self) -> str:
         current_node = self.first_node
         output = ''
-        count = 0
         while current_node:
-            output += str(count) + ' : ' + str(current_node.data) + ', '
+            output += str(current_node.data) + ', '
             current_node = current_node.next_node
-            count += 1
         return output
 
     def _goto_node(self, ind):
@@ -82,6 +83,15 @@ class LinkedList:
             current_node = current_node.next_node
         print("Element not found.")
 
+
+    def get_last_element(self):
+        current_node = self.first_node
+        while current_node:
+            holds_data = current_node.data
+            current_node = current_node.next_node
+        print(holds_data)
+
+
     def delete(self, ind):
         print(f"Index to delete: {ind}")
         prev_node = self._goto_node(ind-1)
@@ -93,16 +103,32 @@ class LinkedList:
         delete_node.next_node = None
 
 
+    def reverse_data(self):
+        previous_node = None
+        current_node = self.first_node
+        while current_node:
+            next_node = current_node.next_node
+            current_node.next_node = previous_node
+            previous_node = current_node
+
+            current_node = next_node
+
+        self.first_node = previous_node
+        print(self)
+
+
 if __name__ == '__main__':
     ll = LinkedList()
-    ll.insert(1)
     for _ in range(5):
         ll.insert(_, last=True)
     print(ll)
-    ll.insert(5, 2)
-    print(ll)
-    ll.delete(1)
-    print("After delete")
-    print(ll)
-    print("Search...")
-    print(ll.search(4))
+    # ll.insert(5, 2)
+    # print(ll)
+    # ll.delete(1)
+    # print("After delete")
+    # print(ll)
+    # print("Search...")
+    # print(ll.search(4))
+    # ll.get_last_element()
+    ll.reverse_data()
+    
