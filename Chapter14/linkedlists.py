@@ -91,6 +91,12 @@ class LinkedList:
             current_node = current_node.next_node
         print(holds_data)
 
+    def get_node(self, index):
+        current_node = self.first_node
+        while index:
+            current_node = current_node.next_node
+            index-=1
+        return current_node
 
     def delete(self, ind):
         print(f"Index to delete: {ind}")
@@ -116,6 +122,13 @@ class LinkedList:
         self.first_node = previous_node
         print(self)
 
+    @staticmethod
+    def delete_mid(nd):
+        access_node = nd.next_node
+        nd.data = access_node.data
+        nd.next_node = access_node.next_node
+        access_node.next_node = None
+
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -130,5 +143,8 @@ if __name__ == '__main__':
     # print("Search...")
     # print(ll.search(4))
     # ll.get_last_element()
-    ll.reverse_data()
+    # ll.reverse_data()
+    a = ll.get_node(3)
+    ll.delete_mid(a)
+    print(ll)
     
