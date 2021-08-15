@@ -25,5 +25,6 @@ class BinaryTree:
 if __name__ == '__main__':
     t = BinaryTree(12)
     t.insert(54)
+    # Pending search
     print(t)
 
