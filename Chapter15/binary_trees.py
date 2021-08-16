@@ -3,22 +3,30 @@
 class TreeNode:
     def __init__(self, data):
         self.data = data
-        self.right_child = None
-        self.left_child = None
+        self.right = None
+        self.left = None
 
 class BinaryTree:
     def __init__(self, data) -> None:
         self.root = TreeNode(data)
 
+    def _do_insert(data, node):
+        if node == None:
+            node = TreeNode(data)
+        else:
+            BinaryTree._do_insert(data, node.left)
+            BinaryTree._do_insert(data, node.right)
+
+
     def insert(self, data):
-        current_node = self.root
-        if current_node.left_child == None:
-            current_node.left_child = TreeNode(data)
-        elif current_node.right_child == None:
-            current_node.right_child = TreeNode(data)
-            
+        if self.root.data == None:
+            self.root.data = data
+            return
+        else:
+            BinaryTree._do_insert(data, self.root)   
+
     def __str__(self) -> str:
-        return f"{self.root.data}, L:{self.root.left_child.data},R:{self.root.right_child}"
+        return f"{self.root.data}, L:{self.root.left.data},R:{self.root.right}"
 
 
 
