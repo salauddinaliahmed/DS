@@ -47,7 +47,11 @@ class BinaryTree:
     def _do_search(node, elem):
         if node == None or node.data == elem:
             return node
-        
+
+        # O(N) complexity. Useless but when combining recusive functions, we need to perform some sort of combination
+        # to its return values. They can have a single return for obvious reasons.        
+        # return BinaryTree._do_search(node.right, elem) or BinaryTree._do_search(node.left, elem)
+
         if elem > node.data:
             return BinaryTree._do_search(node.right, elem)
         else:
@@ -68,5 +72,5 @@ if __name__ == '__main__':
 
     # Pending search
     print(t)
-    print(t.search(72).data)
+    print(t.search(30).data)
 
