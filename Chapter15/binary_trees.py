@@ -1,13 +1,13 @@
 """Learning binary trees."""
 
 class TreeNode:
-    def __init__(self, data):
+    def __init__(self, data=None):
         self.data = data
         self.right = None
         self.left = None
 
 class BinaryTree:
-    def __init__(self, data) -> None:
+    def __init__(self, data=None) -> None:
         self.root = TreeNode(data)
 
     @staticmethod
@@ -31,27 +31,42 @@ class BinaryTree:
         BinaryTree._do_insert(self.root, value)
 
     @staticmethod
-    def _nodes_printer(node):
+    def _nodes_printer(node, direction=None):
         if node == None:
             return
         
-        print(node.data)
-        BinaryTree._nodes_printer(node.left)
-        BinaryTree._nodes_printer(node.right)
+        print(f"{direction.upper() if direction else 'Root'}:{node.data}")
+        BinaryTree._nodes_printer(node.left, direction='left')
+        BinaryTree._nodes_printer(node.right, direction='right')
 
 
     def __str__(self) -> str:
         BinaryTree._nodes_printer(self.root)
         return ''       
 
+    def _do_search(node, elem):
+        if node == None or node.data == elem:
+            return node
+        
+        if elem > node.data:
+            return BinaryTree._do_search(node.right, elem)
+        else:
+            return BinaryTree._do_search(node.left, elem)
+
+
+    def search(self, elem):
+        return BinaryTree._do_search(self.root, elem)
+
+
 
 if __name__ == '__main__':
     import random
-    t = BinaryTree(12)
-    t.insert(54)
-    for _ in range(5):
-        t.insert(random.randint(1, 50))
+    t = BinaryTree()
+    e = [20, 45, 30, 72, 18]
+    for _ in e:
+        t.insert(_)
 
     # Pending search
     print(t)
+    print(t.search(72).data)
 
