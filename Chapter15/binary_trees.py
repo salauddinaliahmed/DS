@@ -1,5 +1,5 @@
 """Learning binary trees."""
-
+x = [0, 1, 2, 3, 4, 5]
 class TreeNode:
     def __init__(self, data=None):
         self.data = data
@@ -58,9 +58,31 @@ class BinaryTree:
             return BinaryTree._do_search(node.left, elem)
 
 
+    def _do_delete(node):
+        if node.left != None and node.right == None:
+            node.data = node.left.data
+            node.left = None
+        elif node.right != None and node.left == None:
+            node.data = node.right.data
+            node.right = None
+        elif node.right == None and node.left == None:
+            return node
+
+        pass
+    
+
+    def delete(self, elem):
+        pass
+
+    @staticmethod
+    def do_rec(im):
+        if im == 0:
+            return x.pop()
+        t = BinaryTree.do_rec(im-1)
+        return t
+
     def search(self, elem):
         return BinaryTree._do_search(self.root, elem)
-
 
 
 if __name__ == '__main__':
@@ -71,6 +93,8 @@ if __name__ == '__main__':
         t.insert(_)
 
     # Pending search
+    print(x.pop())
+    print(x)
     print(t)
-    print(t.search(30).data)
-
+    # print(t.search(30).data)
+    # print(t.do_rec(5))
