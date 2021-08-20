@@ -36,7 +36,7 @@ class BinaryTree:
             return
         # This is in order traversal. Left root right
         BinaryTree._nodes_printer(node.left, direction='left')
-        print(f"{direction.upper() if direction else 'Root'}:{node.data}")0
+        print(f"{direction.upper() if direction else 'Root'}:{node.data}")
         BinaryTree._nodes_printer(node.right, direction='right')
         
 
