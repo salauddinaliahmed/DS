@@ -75,15 +75,56 @@ class BinaryTree:
         pass
 
     @staticmethod
-    def do_rec(im):
-        if im == 0:
-            return x.pop()
-        t = BinaryTree.do_rec(im-1)
-        return t
+    def _do_delete(node, n_val):
+        # First the base case.
+        if node == None:
+            return None
+        
+        # Then we need to find the node. 
+        if node.data > n_val:
+            # Look left and while looking assign the value to left node. 
+            # This can be confusing but for cases where the a left child's subtree exists, it returns itself to itself.
+            # There by not changing anything. 
+            node.left = BinaryTree._do_delete(node.left, n_val)
+            return node
+        
+        # Look in the right subtree.
+        elif node.data < n_val:
+            node.right = BinaryTree._do_delete(node.right, n_val)
+            return node
+        
+        # We found the data to delete.
+        elif node.data == n_val:
+            # If the left nodes do not exist, we can just return the right child which will go to the delete loop.
+            if node.left is None:
+                return node.right
+            
+            elif node.right is None:
+                return node.left
+            
+            # This is where it has 2 children.
+            else:
+                node.right = BinaryTree.lift(node.right, node)
+                return node
 
-    def search(self, elem):
-        return BinaryTree._do_search(self.root, elem)
+    @staticmethod
+    def lift(node, node_d):
+        if node.left:
+            # So, this is the parent of the successor.
+            node.left = BinaryTree.lift(node.left, node)
+            return node
+        else:
+            # We found the successor node. No more left children.
+            # We replace the node's value with the value 
+            node_d.data = node.data
+            
+            # This will be used at step 114, to be assigned to parents left chid.
+            return node.right
 
+
+
+    def delete(self, n_val):
+        return BinaryTree._do_delete(self.root, n_val)
 
 if __name__ == '__main__':
     import random
@@ -96,5 +137,6 @@ if __name__ == '__main__':
     print(x.pop())
     print(x)
     print(t)
-    # print(t.search(30).data)
-    # print(t.do_rec(5))
+    t.delete(45)
+    print("After delete--------------------")
+    print(t)
