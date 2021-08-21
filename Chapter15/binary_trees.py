@@ -130,14 +130,12 @@ class BinaryTree:
 if __name__ == '__main__':
     import random
     t = BinaryTree()
-    e = [20, 45, 30, 72, 18]
+    e = [1, 5, 9, 2, 4, 10, 6, 3, 8]
     for _ in e:
         t.insert(_)
 
     # Pending search
-    print(x.pop())
-    print(x)
     print(t)
-    t.delete(45)
-    print("After delete--------------------")
-    print(t)
+    # t.delete(45)
+    # print("After delete--------------------")
+    # print(t)
