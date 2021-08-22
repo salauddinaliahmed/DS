@@ -143,7 +143,7 @@ class BinaryTree:
 if __name__ == '__main__':
     import random
     t = BinaryTree()
-    e = [1, 5, 9, 2, 4, 10, 6, 3, 8]
+    e = [1, 5, 9, 2, 4, 10, 6, 3, 147]
     for _ in e:
         t.insert(_)
 
