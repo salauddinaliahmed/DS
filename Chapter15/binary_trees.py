@@ -123,9 +123,22 @@ class BinaryTree:
             return node.right
 
 
-
     def delete(self, n_val):
         return BinaryTree._do_delete(self.root, n_val)
+
+
+    def _greatest_value(node):
+        if node == None or node.right == None:
+            return node
+
+        else:
+            return BinaryTree._greatest_value(node.right)
+
+    def greatest_value(self):
+        node = BinaryTree._greatest_value(self.root)        
+        if node:
+            return node.data
+
 
 if __name__ == '__main__':
     import random
@@ -136,6 +149,7 @@ if __name__ == '__main__':
 
     # Pending search
     print(t)
+    print("Greatest value: ", t.greatest_value())
     # t.delete(45)
     # print("After delete--------------------")
     # print(t)
