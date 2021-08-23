@@ -152,4 +152,4 @@ if __name__ == '__main__':
     print("Greatest value: ", t.greatest_value())
     # t.delete(45)
     # print("After delete--------------------")
-    # print(t)
+    print(t)
