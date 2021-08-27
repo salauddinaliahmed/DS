@@ -6,3 +6,10 @@ class Heap:
         self.left = left
         self.right = right
     
+
+    def insert(self, val):
+        pass
+
+    def delete(self):
+        """Only deletes the root node."""
+        pass
