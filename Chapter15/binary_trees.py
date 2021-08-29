@@ -153,3 +153,4 @@ if __name__ == '__main__':
     # t.delete(45)
     # print("After delete--------------------")
     print(t)
+    print(t._nodes_printer(t.root))

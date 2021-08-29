@@ -49,7 +49,8 @@ class Heap:
         right = (ind*2) + 2
         max_len = len(self.heap_arr)
 
-        if right > max_len and left <= max_len:
+        #  and left <= max_len part unnecessary.
+        if right > max_len:
             return left
 
         else:
