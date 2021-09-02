@@ -33,6 +33,13 @@ class Trie:
         
         current_node.children['*'] = None
 
+    def collect_all_words(self, node=None, word="", words_list=[]):
+        if not node:
+            node = self.root
+
+        """Should print a list of all the words in the trie or words starting from the supplied node."""
+        pass
+
 
 if __name__ == '__main__':
     tr = Trie()
