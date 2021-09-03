@@ -35,10 +35,16 @@ class Trie:
 
     def collect_all_words(self, node=None, word="", words_list=[]):
         if not node:
-            node = self.root
+            node = self.root.children
 
+        for each_key, obj in node.items():
+            if each_key == "*":
+                words_list.append(word)
+            else:
+                self.collect_all_words(obj.children, word=word+each_key, words_list=words_list)
+    
         """Should print a list of all the words in the trie or words starting from the supplied node."""
-        pass
+        return words_list
 
 
 if __name__ == '__main__':
@@ -46,3 +52,4 @@ if __name__ == '__main__':
     tr.insert('cat')
     tr.insert('bat')
     print(tr)
+    print(tr.collect_all_words())
