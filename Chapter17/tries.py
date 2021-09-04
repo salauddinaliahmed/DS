@@ -46,6 +46,11 @@ class Trie:
         """Should print a list of all the words in the trie or words starting from the supplied node."""
         return words_list
 
+    def autocomplete(self, prefix):
+        current_node = self.search(prefix)
+        if not current_node:
+            return None
+        return self.collect_all_words(current_node)
 
 if __name__ == '__main__':
     tr = Trie()
