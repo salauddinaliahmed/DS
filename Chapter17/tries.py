@@ -22,6 +22,15 @@ class Trie:
             level 3 t 
         """
         pass
+        current_node = self.root
+        for each_letter in word:
+            if current_node.children.get(each_letter, False):
+                current_node = current_node.children[each_letter]
+            else:
+                return None
+        return current_node.children
+
+
     
     def insert(self, word):
         current_node = self.root
@@ -55,6 +64,7 @@ class Trie:
 if __name__ == '__main__':
     tr = Trie()
     tr.insert('cat')
+    tr.insert('cap')
     tr.insert('bat')
     print(tr)
-    print(tr.collect_all_words())
+    print(tr.autocomplete('ca'))
