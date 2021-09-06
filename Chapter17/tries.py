@@ -1,5 +1,8 @@
 # Trying out Trie data structure.
 
+from typing import Counter
+
+
 class TrieNode:
     """Just has a single attribute for children."""
     def __init__(self) -> None:
@@ -75,6 +78,21 @@ class Trie:
             return None
         return self.collect_all_words(current_node)
 
+    def _do_traverse(self, node, count=0):
+        if node == None:
+            return
+        for k, v in node.children.items():
+            if k == "*":
+                return
+            print(k)
+            count += 1
+            self._do_traverse(v, count=count)
+        return count
+
+    def traverse_trie(self):
+        x = self._do_traverse(self.root)
+        print(f"Total characters: {x}")
+
 if __name__ == '__main__':
     tr = Trie()
     tr.insert('cat')
@@ -83,3 +101,4 @@ if __name__ == '__main__':
     tr.insert('battle')
     print(tr)
     print(tr.autocomplete('ca'))
+    tr.traverse_trie()
