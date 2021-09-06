@@ -30,6 +30,9 @@ class Trie:
                 return None
         return current_node.children
 
+    @staticmethod
+    def calculate_popularity(word):
+        return len(word)
 
     
     def insert(self, word):
@@ -39,20 +42,31 @@ class Trie:
                 current_node = n
             else:
                 current_node.children[each_letter] = current_node =  TrieNode()
-        
-        current_node.children['*'] = None
+        current_node.children['*'] = Trie.calculate_popularity(word)
 
+    def most_common_words(foo):
+        def _inner(self, *args, **kwargs):
+            word_tup_list = foo(self, *args, **kwargs)
+            sorted_words = sorted(word_tup_list)            
+
+            return [_[-1] for _ in sorted_words]
+
+        return _inner
+
+    @most_common_words
     def collect_all_words(self, node=None, word="", words_list=[]):
         if not node:
             node = self.root.children
 
         for each_key, obj in node.items():
             if each_key == "*":
-                words_list.append(word)
+                # Updates popularity along with word.
+                words_list.append((obj, word))
             else:
                 self.collect_all_words(obj.children, word=word+each_key, words_list=words_list)
     
         """Should print a list of all the words in the trie or words starting from the supplied node."""
+
         return words_list
 
     def autocomplete(self, prefix):
@@ -64,7 +78,8 @@ class Trie:
 if __name__ == '__main__':
     tr = Trie()
     tr.insert('cat')
-    tr.insert('cap')
-    tr.insert('bat')
+    tr.insert('call')
+    tr.insert('captain')
+    tr.insert('battle')
     print(tr)
     print(tr.autocomplete('ca'))
