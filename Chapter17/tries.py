@@ -17,6 +17,11 @@ class Trie:
     def __str__(self):
         return f'Roots children: {self.root.children.keys()}'
 
+    
+    def do_autocorrect(self, word):
+        all_words = self.collect_all_words(self.search(word))
+        return word + all_words[0]
+
     def search(self, word):
         """We iterate through the word and check for each character in the trie
             each character is a key with the value as another trie node with the next set of characters.
@@ -26,11 +31,18 @@ class Trie:
         """
         pass
         current_node = self.root
+        word_found = ''
         for each_letter in word:
             if current_node.children.get(each_letter, False):
+                word_found+=each_letter
                 current_node = current_node.children[each_letter]
             else:
-                return None
+                print(f"This is word found: {word_found}")
+                return word_found
+        
+        if current_node.children.get('*', False):
+            return word
+
         return current_node.children
 
     @staticmethod
@@ -74,20 +86,21 @@ class Trie:
 
     def autocomplete(self, prefix):
         current_node = self.search(prefix)
-        if not current_node:
-            return None
+        if isinstance(current_node, str):
+            if current_node == prefix:
+                return prefix
+            return self.do_autocorrect(current_node)
         return self.collect_all_words(current_node)
+        
 
-    def _do_traverse(self, node, count=0):
+    def _do_traverse(self, node):
         if node == None:
             return
         for k, v in node.children.items():
-            if k == "*":
-                return
             print(k)
-            count += 1
-            self._do_traverse(v, count=count)
-        return count
+            if isinstance(v, int):
+                return
+            self._do_traverse(v)
 
     def traverse_trie(self):
         x = self._do_traverse(self.root)
@@ -100,5 +113,5 @@ if __name__ == '__main__':
     tr.insert('captain')
     tr.insert('battle')
     print(tr)
-    print(tr.autocomplete('ca'))
-    tr.traverse_trie()
+    print(tr.autocomplete('cap'))
+    # tr.traverse_trie()
