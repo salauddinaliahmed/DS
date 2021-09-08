@@ -113,5 +113,5 @@ if __name__ == '__main__':
     tr.insert('captain')
     tr.insert('battle')
     print(tr)
-    print(tr.autocomplete('cap'))
+    print(tr.autocomplete('ca'))
     # tr.traverse_trie()
