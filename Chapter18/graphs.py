@@ -31,11 +31,28 @@ class Graph:
                 traversed_dict[each_node] = True
                 Graph.depth_first_search(node=each_node, traversed_dict=traversed_dict)
 
-    def dfs(self, node=None):
+    @staticmethod
+    def dfs_find_node(node, search_for, traversed_dict={}):
+        if search_for == node.vertex:
+            return node
+        for each_node in node.adjecent_vertices:
+            if traversed_dict.get(each_node, False):
+                continue
+            else:
+                print('Printer: ', each_node.vertex)
+                traversed_dict[each_node] = True
+                val = Graph.dfs_find_node(node=each_node,search_for=search_for, traversed_dict=traversed_dict)
+                if val:
+                    return val
+        return None
+
+    def dfs(self, node=None, find_node_val=None):
         if not node:
             node=self
-        
-        self.depth_first_search(node=node)
+        if not find_node_val:    
+            self.depth_first_search(node=node)
+        else:
+            return self.dfs_find_node(node, find_node_val)
 
     def __str__(self) -> str:
         vertices = [_.vertex for _ in self.adjecent_vertices]
@@ -54,3 +71,5 @@ if __name__=='__main__':
     e.add_adjecent_vertex(Graph('Bella'))
     a.dfs()
     # print([x.vertex for x in e.adjecent_vertices])
+    val = a.dfs(find_node_val='Able')
+    print(f"Result: {val.vertex}")
