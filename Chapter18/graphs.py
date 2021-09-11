@@ -1,3 +1,6 @@
+# from DS.Chapter9 import Queues
+
+
 class Graph:
     def __init__(self, value) -> None:
         self.vertex = value
@@ -58,6 +61,30 @@ class Graph:
         vertices = [_.vertex for _ in self.adjecent_vertices]
         return f"{self.vertex} has connection with the following nodes/vertices: {', '.join(vertices)}"
 
+    @staticmethod
+    def _bfs(node, find_node_val=None):
+        l = []
+        l.append(node)
+        visted_nodes = {}
+        while l:
+            for _ in l[0].adjecent_vertices:
+                if visted_nodes.get(_, False):
+                    continue
+                    
+                else:
+                    visted_nodes[_] = True
+                    print(f"Printer: {_.vertex}")
+                    l.append(_)
+            l.pop(0)
+                    
+    
+    
+    def bfs(self, node=None, find_node_val=None):
+        if node == None:
+            node = self
+        return self._bfs(node, find_node_val=find_node_val)
+        
+
 
 if __name__=='__main__':
     a = Graph('Adam')
@@ -73,3 +100,4 @@ if __name__=='__main__':
     # print([x.vertex for x in e.adjecent_vertices])
     val = a.dfs(find_node_val='Able')
     print(f"Result: {val.vertex}")
+    a.bfs()
