@@ -1,5 +1,4 @@
-# from DS.Chapter9 import Queues
-
+import Chapter9.Queues
 
 class Graph:
     def __init__(self, value) -> None:
@@ -85,6 +84,9 @@ class Graph:
         return self._bfs(node, find_node_val=find_node_val)
         
 
+    def dfs_with_queue(self):
+        pass
+
 
 if __name__=='__main__':
     a = Graph('Adam')
@@ -100,4 +102,5 @@ if __name__=='__main__':
     # print([x.vertex for x in e.adjecent_vertices])
     val = a.dfs(find_node_val='Able')
     print(f"Result: {val.vertex}")
+    print('_______________________________________')
     a.bfs()
