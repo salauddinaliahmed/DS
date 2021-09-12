@@ -1,4 +1,8 @@
-import Chapter9.Queues
+import sys
+sys.path.append('../')
+from Chapter9 import Queues
+# Todo: Learn about imports and creating packages.
+
 
 class Graph:
     def __init__(self, value) -> None:
@@ -65,14 +69,15 @@ class Graph:
         l = []
         l.append(node)
         visted_nodes = {}
+        visted_nodes[node]=True
         while l:
+            print(f"Printer: {l[0].vertex}")
             for _ in l[0].adjecent_vertices:
                 if visted_nodes.get(_, False):
                     continue
                     
                 else:
                     visted_nodes[_] = True
-                    print(f"Printer: {_.vertex}")
                     l.append(_)
             l.pop(0)
                     
@@ -84,8 +89,20 @@ class Graph:
         return self._bfs(node, find_node_val=find_node_val)
         
 
-    def dfs_with_queue(self):
-        pass
+    def bfs_with_queue(self):
+        current_node = self
+        visited_nodes = {}
+        visited_nodes[current_node] = True
+        q = Queues.Queue(current_node)
+        while q:
+            current_node = q.dequeue()
+            print("Printer: ", current_node.vertex)
+            for each_node in current_node.adjecent_vertices:
+                if visited_nodes.get(each_node, False):
+                    continue
+
+                q.enqueue(each_node)
+                visited_nodes[each_node] = True
 
 
 if __name__=='__main__':
@@ -98,9 +115,11 @@ if __name__=='__main__':
     e.add_adjecent_vertex(bb)
     a.add_adjecent_vertex(ab)
     e.add_adjecent_vertex(Graph('Bella'))
-    a.dfs()
-    # print([x.vertex for x in e.adjecent_vertices])
-    val = a.dfs(find_node_val='Able')
-    print(f"Result: {val.vertex}")
+    # a.dfs()
+    # # print([x.vertex for x in e.adjecent_vertices])
+    # val = a.dfs(find_node_val='Able')
+    # print(f"Result: {val.vertex}")
     print('_______________________________________')
     a.bfs()
+    print('_______________________________________')
+    a.bfs_with_queue()
