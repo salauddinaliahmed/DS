@@ -1,7 +1,13 @@
 from weighted_graphs import WeightedGraph
 
 def dijkstras_algo(source, destination):
-    pass
+    min_prices_from_source_city = {source.vertex: 0}
+    min_price_from_start_city_via_stepover_city = {}
+    
+    cities_visited = {}
+    current_city = source
+
+    # Need to figure out a way to get the visited cities.
 
 
 if __name__ == '__main__':
