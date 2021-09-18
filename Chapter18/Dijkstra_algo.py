@@ -6,8 +6,17 @@ def dijkstras_algo(source, destination):
     
     cities_visited = {}
     current_city = source
+    for k,v in current_city.adjecent_vertices.items():
+        price = -1
+        if price:= min_prices_from_source_city.get(k, -1):
+            if price == -1 or v < price:
+                min_prices_from_source_city[k] = v
+                min_price_from_start_city_via_stepover_city[k] = current_city.vertex
+                
+            
 
     # Need to figure out a way to get the visited cities.
+    
 
 
 if __name__ == '__main__':
