@@ -1,18 +1,33 @@
+import sys
+sys.path.append('./')
+
+from Chapter16.heaps import Heap
 from weighted_graphs import WeightedGraph
+
 
 def dijkstras_algo(source, destination):
     min_prices_from_source_city = {source.vertex: 0}
     min_price_from_start_city_via_stepover_city = {}
-    
-    cities_visited = {}
-    current_city = source
-    for k,v in current_city.adjecent_vertices.items():
-        price = -1
-        if price:= min_prices_from_source_city.get(k, -1):
-            if price == -1 or v < price:
-                min_prices_from_source_city[k] = v
-                min_price_from_start_city_via_stepover_city[k] = current_city.vertex
-                
+
+    unvisited_cites = Heap(source)
+
+    visited_cities = {}
+
+    while unvisited_cites:
+        current_city = unvisited_cites.delete()
+        visited_cities[source.vertex] = True
+        for adj_city, price in current_city.adjecent_vertices.items():
+            if visited_cities.get(adj_city, False):
+                unvisited_cites.insert(adj_city)
+            print("Adjecent_city ", adj_city)
+            print("Price ", price)
+        
+        current_city = unvisited_cites.delete()
+    print("Algo end")
+
+
+
+
             
 
     # Need to figure out a way to get the visited cities.
@@ -34,4 +49,4 @@ if __name__ == '__main__':
     denver.add_adjecent_vertex(chicago, 40)
     denver.add_adjecent_vertex(el_paso, 140)
 
-    print(atlanta)
+    dijkstras_algo(atlanta, denver)

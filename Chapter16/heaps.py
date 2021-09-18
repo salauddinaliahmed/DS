@@ -35,7 +35,7 @@ class Heap:
         # Combined 2 conditions rather than using break with if and else.
         x = self.heap_arr[self.parent_of(ind_last)]
         y = self.heap_arr[ind_last]
-        while ind_last > 0 and self.heap_arr[self.parent_of(ind_last)] < self.heap_arr[ind_last]:
+        while ind_last > 0 and self.heap_arr[self.parent_of(ind_last)] > self.heap_arr[ind_last]:
             # Compare with the parent, if greater, swap. (Trickle up)
             a = self.heap_arr[self.parent_of(ind_last)]
             b = self.heap_arr[ind_last]
@@ -54,7 +54,7 @@ class Heap:
             return left
 
         else:
-            if self.heap_arr[right] > self.heap_arr[left]:
+            if self.heap_arr[right] < self.heap_arr[left]:
                 return right
             else:
                 return left
@@ -70,10 +70,10 @@ class Heap:
             if left > max_len:
                 return False
             else:
-                return self.heap_arr[left] > self.heap_arr[ind]
+                return self.heap_arr[left] < self.heap_arr[ind]
 
         else:
-            return self.heap_arr[left] > self.heap_arr[ind] or self.heap_arr[right] > self.heap_arr[ind]
+            return self.heap_arr[left] < self.heap_arr[ind] or self.heap_arr[right] < self.heap_arr[ind]
 
 
     def delete(self):
