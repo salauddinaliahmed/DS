@@ -80,10 +80,13 @@ class Heap:
         """Only deletes the root node."""
         root_node = self.first_node
         # Pop defaults to last value. Delete the last value.
-        self.heap_arr[0] = self.heap_arr.pop()
 
         print(f"Heap after delete: {self.heap_arr}")
         current_node = 0
+
+        if len(self.heap_arr) >= 1:
+            self.heap_arr = self.heap_arr[1:]
+
 
         while current_node < len(self.heap_arr) and self.has_greater_child(current_node):
             
