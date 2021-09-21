@@ -39,6 +39,16 @@ class Graph:
 
     @staticmethod
     def dfs_find_node(node, search_for, traversed_dict={}):
+        """
+        This function works recursively by calling itself on each of the adjecent nodes individual node.
+        There by adding a node to the call stack with each call to its own adjecent node. 
+        We only stop If we find the node that we are following for.
+
+
+        Here only the else part has the recursive call, so if is the base case of the recursion, which ends the for loop.
+        """
+
+
         if search_for == node.vertex:
             return node
         for each_node in node.adjecent_vertices:
@@ -66,6 +76,11 @@ class Graph:
 
     @staticmethod
     def _bfs(node, find_node_val=None):
+        """
+        For BFS you visit each of the adjecent vertices of the node sequentially. 
+        Without going into each nodes own adjecent node. We use queue keep track of those nodes to move onto next.
+
+        """
         l = []
         l.append(node)
         visted_nodes = {}
