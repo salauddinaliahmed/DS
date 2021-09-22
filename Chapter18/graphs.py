@@ -1,5 +1,6 @@
 import sys
 sys.path.append('../')
+
 from Chapter9 import Queues
 # Todo: Learn about imports and creating packages.
 
@@ -88,6 +89,9 @@ class Graph:
         while l:
             print(f"Printer: {l[0].vertex}")
             for _ in l[0].adjecent_vertices:
+                if _.vertex == find_node_val:
+                    return _
+
                 if visted_nodes.get(_, False):
                     continue
                     
@@ -138,3 +142,4 @@ if __name__=='__main__':
     a.bfs()
     print('_______________________________________')
     a.bfs_with_queue()
+    print(a.bfs(find_node_val='Bella'))
