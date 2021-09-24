@@ -16,13 +16,16 @@ class Graph:
     #     self.adjecent_vertices.append(vertex)
 
     def add_adjecent_vertex(self, vertex):
+        if isinstance(vertex, list):
+           self.adjecent_vertices.extend(vertex)
+           return
+
         # Undirected graph, meaning all relationships go two ways.
 
         if vertex in self.adjecent_vertices:
             return
         # Add the vertex to the current object.
         self.adjecent_vertices.append(vertex)
-
         # Add the current object/ self to the passed argument (vertex's) adjecent vertices.
         vertex.add_adjecent_vertex(self)
 
