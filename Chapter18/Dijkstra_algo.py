@@ -158,7 +158,7 @@ if __name__ == '__main__':
     sasha.add_adjecent_vertex(lina)
     lina.add_adjecent_vertex(kamil)
 
-    dijkstras_algo_assignment(idris, lina)
+    dijkstras_algo_assignment(idris, sasha)
 
 
 
