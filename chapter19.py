@@ -27,6 +27,25 @@ def greedy_search(s):
     return greatest_num
 
 
+def greedy_find_max_subsection(l):
+    current_score = 0
+    greatest_score = 0
+
+    for each_number in l:
+        current_score += each_number
+        
+        if current_score <= 0:
+            current_score = 0
+        
+        else:
+            # greatest_score = current_score if greatest_score < current_score else greatest_score
+
+            greatest_score = current_score
+    
+    return greatest_score
+
+
 if __name__ == '__main__':
     rev_string([1, 4, 5, 2])
     print(greedy_search([1,2, 5, 3]))
+    print(greedy_find_max_subsection([4, -4, -1, -3, -5, -9]))
