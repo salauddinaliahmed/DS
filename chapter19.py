@@ -44,8 +44,27 @@ def greedy_find_max_subsection(l):
     
     return greatest_score
 
+def stock_upward(l):
+    mid_point = float('inf')
+    low_point = l[0]
+    for each_elem in l:
+        if each_elem < low_point:
+            low_point = each_elem
+        elif each_elem < mid_point:
+            mid_point = each_elem
+        elif each_elem > mid_point:
+            highest_point = each_elem
+        
+    if highest_point:
+        print(f"Lowest: {low_point}, middle: {mid_point}, highest: {highest_point}")
+        return True
+    
+
+
 
 if __name__ == '__main__':
     rev_string([1, 4, 5, 2])
     print(greedy_search([1,2, 5, 3]))
     print(greedy_find_max_subsection([4, -4, -1, -3, -5, -9]))
+    print(stock_upward([5, 2, 8, 4, 3, 7]))
+    print(stock_upward([22, 25, 21, 18, 19.6, 17, 16, 20.5]))
