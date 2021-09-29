@@ -1,3 +1,6 @@
+from Chapter11.anagram import anagram
+
+
 def rev_string(s):
     """
     Reversing the string in O(1) Space
@@ -59,12 +62,34 @@ def stock_upward(l):
         print(f"Lowest: {low_point}, middle: {mid_point}, highest: {highest_point}")
         return True
     
+## Chapter 20
+def anagram_checker(first_word, second_word):
+    first_word_dict = {}
+    second_word_dict = {}
+
+    for each_letter in first_word:
+        if each_letter in first_word:
+            if not first_word_dict.get(each_letter, False):
+                first_word_dict[each_letter] = 1
+            else:
+                first_word_dict[each_letter] += 1
+
+
+    for each_letter in second_word:
+        if each_letter in second_word:
+            if not second_word_dict.get(each_letter, False):
+                second_word_dict[each_letter] = 1
+            else:
+                second_word_dict[each_letter] += 1
+
+    return first_word_dict == second_word_dict
 
 
 
 if __name__ == '__main__':
     rev_string([1, 4, 5, 2])
-    print(greedy_search([1,2, 5, 3]))
-    print(greedy_find_max_subsection([4, -4, -1, -3, -5, -9]))
-    print(stock_upward([5, 2, 8, 4, 3, 7]))
-    print(stock_upward([22, 25, 21, 18, 19.6, 17, 16, 20.5]))
+    # print(greedy_search([1,2, 5, 3]))
+    # print(greedy_find_max_subsection([4, -4, -1, -3, -5, -9]))
+    # print(stock_upward([5, 2, 8, 4, 3, 7]))
+    # print(stock_upward([22, 25, 21, 18, 19.6, 17, 16, 20.5]))
+    print(anagram_checker('cinema', 'icemant'))
