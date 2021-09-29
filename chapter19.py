@@ -85,6 +85,19 @@ def anagram_checker(first_word, second_word):
     return first_word_dict == second_word_dict
 
 
+def athelete_check(arr1, arr2):
+    ath_dict = {}
+    multi_ath = []
+    for each_dict in arr1:
+        ath_dict[each_dict['first_name']+each_dict['last_name']] = True
+
+    for each_dict in arr2:
+        if ath_dict.get(each_dict['first_name']+each_dict['last_name'], False):
+            multi_ath.append(f'{each_dict["first_name"]} {each_dict["last_name"]}')
+    
+    return multi_ath
+
+
 
 if __name__ == '__main__':
     rev_string([1, 4, 5, 2])
@@ -93,3 +106,13 @@ if __name__ == '__main__':
     # print(stock_upward([5, 2, 8, 4, 3, 7]))
     # print(stock_upward([22, 25, 21, 18, 19.6, 17, 16, 20.5]))
     print(anagram_checker('cinema', 'icemant'))
+    print(
+        athelete_check(
+            [{'first_name': 'Bob', 'last_name': 'Lang', 'team': 'lol'},
+             {'first_name': 'Cassy', 'last_name':'Lang', 'team': 'Pony'}
+            ],
+            [
+                {'first_name':'Cassy', 'last_name': 'Lang', 'team': 'Bottles'},
+            ]
+        )
+    )
