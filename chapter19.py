@@ -97,6 +97,12 @@ def athelete_check(arr1, arr2):
     
     return multi_ath
 
+def missing_no(arr):
+    max_elem = max(arr)
+    sum_to_n_terms = (max_elem * (max_elem + 1))/2
+    current_sum = sum(arr)
+    return int(sum_to_n_terms - current_sum)
+
 
 
 if __name__ == '__main__':
@@ -116,3 +122,4 @@ if __name__ == '__main__':
             ]
         )
     )
+    print(missing_no([1,2,4,5]))
