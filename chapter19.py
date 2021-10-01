@@ -103,6 +103,10 @@ def missing_no(arr):
     current_sum = sum(arr)
     return int(sum_to_n_terms - current_sum)
 
+def question3(arr):
+    "Figure out the solution for this tomorrow morning"
+    pass
+
 
 
 if __name__ == '__main__':
