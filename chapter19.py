@@ -119,22 +119,28 @@ def stock_profit(arr):
     3. Once done with the entire iteration thought the arr, substract highest_value from lowest value to get the profit
 
     """
+    
     # Think about a way to preserve order.
-    lowest_buy_price = arr[0]
-    index_of_low = 0
-    highest_sell_price = max(arr)
-    index_of_high = arr.index(highest_sell_price)
+    lowest_val = highest_value = buy_price = sell_price = arr[0]
+    previous_high_index = 0
+    profit = highest_value - lowest_val
 
-    for i, val in enumerate(arr):
-        if lowest_buy_price > val and i <= index_of_high:
-            index_of_low = i
-            lowest_buy_price = val
+    mod_arr = arr[1:]
+    for i, each_val in enumerate(arr):
+        if each_val < lowest_val:
+            if i >= previous_high_index:
+                lowest_val = each_val
+                highest_value = 0
+        elif each_val > highest_value:
+            previous_high_index = i
+            highest_value = each_val
 
-    max_profit = highest_sell_price - lowest_buy_price
-    print(f"Buy on day {index_of_low} and sell on {index_of_high}")
-    print(f"Max profit generated: {max_profit}")
+        if (x:=highest_value - lowest_val) > profit:
+            buy_price = lowest_val
+            sell_price = highest_value
+            profit = x
 
-
+    print(f"Profits: {profit} as stock was bought with price {buy_price} and sold at {sell_price}")
 
 
 if __name__ == '__main__':
@@ -157,5 +163,4 @@ if __name__ == '__main__':
     # print(missing_no([1,2,4,5]))
 
     stock_profit([10, 7, 5, 8, 11, 2, 6])
-    # book_stock_profit([10, 7, 5, 8, 11, 2, 6])
     stock_profit([9, 10, 5, 7, 2, 1])
