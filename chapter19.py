@@ -103,6 +103,10 @@ def missing_no(arr):
     current_sum = sum(arr)
     return int(sum_to_n_terms - current_sum)
 
+def question3(arr):
+    "Figure out the solution for this tomorrow morning"
+    pass
+
 
 def stock_profit(arr):
     """
@@ -145,3 +149,4 @@ if __name__ == '__main__':
 
     stock_profit([10, 7, 5, 8, 11, 2, 6])
     # book_stock_profit([10, 7, 5, 8, 11, 2, 6])
+
