@@ -103,10 +103,6 @@ def missing_no(arr):
     current_sum = sum(arr)
     return int(sum_to_n_terms - current_sum)
 
-def question3(arr):
-    "Figure out the solution for this tomorrow morning"
-    pass
-
 
 def stock_profit(arr):
     """
@@ -124,7 +120,20 @@ def stock_profit(arr):
 
     """
     # Think about a way to preserve order.
-    pass
+    lowest_buy_price = arr[0]
+    index_of_low = 0
+    highest_sell_price = max(arr)
+    index_of_high = arr.index(highest_sell_price)
+
+    for i, val in enumerate(arr):
+        if lowest_buy_price > val and i <= index_of_high:
+            index_of_low = i
+            lowest_buy_price = val
+
+    max_profit = highest_sell_price - lowest_buy_price
+    print(f"Buy on day {index_of_low} and sell on {index_of_high}")
+    print(f"Max profit generated: {max_profit}")
+
 
 
 
@@ -149,4 +158,4 @@ if __name__ == '__main__':
 
     stock_profit([10, 7, 5, 8, 11, 2, 6])
     # book_stock_profit([10, 7, 5, 8, 11, 2, 6])
-
+    stock_profit([9, 10, 5, 7, 2, 1])
