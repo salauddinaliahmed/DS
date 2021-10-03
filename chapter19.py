@@ -104,22 +104,44 @@ def missing_no(arr):
     return int(sum_to_n_terms - current_sum)
 
 
+def stock_profit(arr):
+    """
+    Main idea: You buy low and sell high. 
+    Imp: The arr is in a series, you need to follow a sequence.
+    1. Take the first value as the lowest_value.
+    1.1 Make highest value 0
+    2. Iterate through the list.
+        2.1 See if the value is lower than the lowest_value.
+            2.1.1 If true, replace the lowest_value. 
+        2.2 See if the value is greater than the highest value.
+            2.2.2 If true, replace the highest value.
+
+    3. Once done with the entire iteration thought the arr, substract highest_value from lowest value to get the profit
+
+    """
+    # Think about a way to preserve order.
+    pass
+
+
 
 if __name__ == '__main__':
-    rev_string([1, 4, 5, 2])
-    # print(greedy_search([1,2, 5, 3]))
-    # print(greedy_find_max_subsection([4, -4, -1, -3, -5, -9]))
-    # print(stock_upward([5, 2, 8, 4, 3, 7]))
-    # print(stock_upward([22, 25, 21, 18, 19.6, 17, 16, 20.5]))
-    print(anagram_checker('cinema', 'icemant'))
-    print(
-        athelete_check(
-            [{'first_name': 'Bob', 'last_name': 'Lang', 'team': 'lol'},
-             {'first_name': 'Cassy', 'last_name':'Lang', 'team': 'Pony'}
-            ],
-            [
-                {'first_name':'Cassy', 'last_name': 'Lang', 'team': 'Bottles'},
-            ]
-        )
-    )
-    print(missing_no([1,2,4,5]))
+    # rev_string([1, 4, 5, 2])
+    # # print(greedy_search([1,2, 5, 3]))
+    # # print(greedy_find_max_subsection([4, -4, -1, -3, -5, -9]))
+    # # print(stock_upward([5, 2, 8, 4, 3, 7]))
+    # # print(stock_upward([22, 25, 21, 18, 19.6, 17, 16, 20.5]))
+    # print(anagram_checker('cinema', 'icemant'))
+    # print(
+    #     athelete_check(
+    #         [{'first_name': 'Bob', 'last_name': 'Lang', 'team': 'lol'},
+    #          {'first_name': 'Cassy', 'last_name':'Lang', 'team': 'Pony'}
+    #         ],
+    #         [
+    #             {'first_name':'Cassy', 'last_name': 'Lang', 'team': 'Bottles'},
+    #         ]
+    #     )
+    # )
+    # print(missing_no([1,2,4,5]))
+
+    stock_profit([10, 7, 5, 8, 11, 2, 6])
+    # book_stock_profit([10, 7, 5, 8, 11, 2, 6])
