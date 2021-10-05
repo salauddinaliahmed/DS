@@ -118,6 +118,9 @@ def stock_profit(arr):
 
     3. Once done with the entire iteration thought the arr, substract highest_value from lowest value to get the profit
 
+    What i did: I had to reset the high price incase we find that the lowest price's index is higher than the highest price encountered.
+
+
     """
     
     # Think about a way to preserve order.
@@ -125,7 +128,6 @@ def stock_profit(arr):
     previous_high_index = 0
     profit = highest_value - lowest_val
 
-    mod_arr = arr[1:]
     for i, each_val in enumerate(arr):
         if each_val < lowest_val:
             if i >= previous_high_index:
@@ -141,6 +143,9 @@ def stock_profit(arr):
             profit = x
 
     print(f"Profits: {profit} as stock was bought with price {buy_price} and sold at {sell_price}")
+
+def question_4(*args, **kwargs):
+    pass
 
 
 if __name__ == '__main__':
