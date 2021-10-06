@@ -144,8 +144,26 @@ def stock_profit(arr):
 
     print(f"Profits: {profit} as stock was bought with price {buy_price} and sold at {sell_price}")
 
-def question_4(*args, **kwargs):
-    pass
+def greatest_product(arr):
+    h_one = h_two = l_one = l_two = 0
+    
+    for each_n in arr:
+        if each_n > h_one:
+            h_two = h_one
+            h_one = each_n
+        elif each_n > h_two:
+            h_two = each_n
+        elif each_n < l_one:
+            l_two = l_one
+            l_one = each_n
+        elif each_n < l_two:
+            l_two = each_n 
+
+    if h_one * h_two > l_one * l_two:
+        return h_one * h_two
+    else:
+        return l_one * l_two 
+
 
 
 if __name__ == '__main__':
@@ -167,5 +185,7 @@ if __name__ == '__main__':
     # )
     # print(missing_no([1,2,4,5]))
 
-    stock_profit([10, 7, 5, 8, 11, 2, 6])
-    stock_profit([9, 10, 5, 7, 2, 1])
+    # stock_profit([10, 7, 5, 8, 11, 2, 6])
+    # stock_profit([9, 10, 5, 7, 2, 1])
+    print(greatest_product([5,-10, -6, 9, 5, 9]))
+    # print(greatest_product([0, -1, -1]))
