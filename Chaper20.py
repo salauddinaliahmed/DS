@@ -6,7 +6,9 @@ def temp_sort(arr):
     given_temp_dict = {}
     for each_temp in arr:
         if not given_temp_dict.get(each_temp, False):
-            given_temp_dict[each_temp] = True
+            given_temp_dict[each_temp] = 1
+        else:
+            given_temp_dict[each_temp] += 1
 
     
     start_temp = 97.0
@@ -17,8 +19,9 @@ def temp_sort(arr):
         sorted_list.append(start_temp)
 
     for each_temp in sorted_list:
-        if given_temp_dict.get(each_temp, False):
-            result.append(each_temp)
+        if x:=given_temp_dict.get(each_temp, False):
+            for _ in range(x):
+                result.append(each_temp)
 
     return result
     
@@ -27,3 +30,4 @@ def temp_sort(arr):
 
 if __name__ == '__main__':
     print(temp_sort([98.6, 98.0, 99.0, 98.9, 95.5, 98.2, 98.0, 97.1]))
+    # What i missed in the earlier implementation is that my algo does not respect duplicates.
