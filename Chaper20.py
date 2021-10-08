@@ -24,6 +24,9 @@ def temp_sort(arr):
                 result.append(each_temp)
 
     return result
+
+def longest_sequence(arr):
+    pass
     
 
 
