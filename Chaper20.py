@@ -26,6 +26,10 @@ def temp_sort(arr):
     return result
 
 def longest_sequence(arr):
+
+    """
+    Should loop through the array and find the longest sequence. 
+    """
     pass
     
 
