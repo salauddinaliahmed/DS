@@ -29,6 +29,11 @@ def longest_sequence(arr):
 
     """
     Should loop through the array and find the longest sequence. 
+    
+    1. Create a dictionary and then store the values.
+    2. Loop through each number and check if the next subsequent number is in the dictionary.
+        - If it is, then increase count by one (Loop through incrementing one each time until you dont find it)
+        - Keep track of the count, if its great next time you update. 
     """
     pass
     
