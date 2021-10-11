@@ -77,8 +77,35 @@ def longest_sequence(arr):
     print(new_dict_sorted)
 
 
+def new_logic(arr):
+    all_dict = {}
+
+    for _ in arr:
+        all_dict[_] = 1
+
+
+    max_l = len(arr)
+    i = 0
+    longest_sequence=0
+    current_sequence=0
+
+    while i < max_l-1:
+        if all_dict.get(arr[i], False) == 1 and all_dict.get(arr[i]+1, False) == 1:
+            current_sequence += 1
+            if current_sequence > longest_sequence:
+                longest_sequence = current_sequence
+        else:
+            current_sequence = 0
+        
+        i += 1
+    print("New_Logic: ", longest_sequence)
+    
+
+
 
 if __name__ == '__main__':
     # print(temp_sort([98.6, 98.0, 99.0, 98.9, 95.5, 98.2, 98.0, 97.1]))
     # What i missed in the earlier implementation is that my algo does not respect duplicates.
     longest_sequence([13, 54, 50, 12, 14, 115])
+    new_logic([13, 54, 50, 12, 14, 115])
+    new_new_logic([13, 54, 50, 12, 14, 115])
