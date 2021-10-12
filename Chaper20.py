@@ -81,25 +81,34 @@ def new_logic(arr):
     all_dict = {}
 
     for _ in arr:
-        all_dict[_] = 1
+        all_dict[_] = 0
+
+    max_so_far = 0
+    # for _ in arr:
+    #     if all_dict.get(_, 'no') != 'no':
+    #         all_dict[_] += 1
+    #         if all_dict.get(_+1, 'no') != 'no':
+    #             all_dict[_+1] = all_dict[_] + 1
+
+    for k, v in all_dict.items():
+        if v == 0:
+            all_dict[k] = 1
+
+        if all_dict.get(k+1, 'no') != 'no':
+            all_dict[k+1] = all_dict[k] + 1
+       
 
 
-    max_l = len(arr)
-    i = 0
-    longest_sequence=0
-    current_sequence=0
+    for k, v in all_dict.items():
+        if v > max_so_far:
+            max_so_far = v
+ 
 
-    while i < max_l-1:
-        if all_dict.get(arr[i], False) == 1 and all_dict.get(arr[i]+1, False) == 1:
-            current_sequence += 1
-            if current_sequence > longest_sequence:
-                longest_sequence = current_sequence
-        else:
-            current_sequence = 0
-        
-        i += 1
-    print("New_Logic: ", longest_sequence)
-    
+
+    print("New_Logic: ", all_dict)
+    print(max_so_far)
+
+
 
 
 
@@ -107,5 +116,5 @@ if __name__ == '__main__':
     # print(temp_sort([98.6, 98.0, 99.0, 98.9, 95.5, 98.2, 98.0, 97.1]))
     # What i missed in the earlier implementation is that my algo does not respect duplicates.
     longest_sequence([13, 54, 50, 12, 14, 115])
-    new_logic([13, 54, 50, 12, 14, 115])
-    new_new_logic([13, 54, 50, 12, 14, 115])
+    new_logic([10, 5, 12, 3, 55, 30, 4, 11, 2])
+    new_logic([19, 13, 15, 12, 18, 14, 17, 11, 11])
