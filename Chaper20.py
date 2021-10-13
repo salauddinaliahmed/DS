@@ -78,6 +78,10 @@ def longest_sequence(arr):
 
 
 def new_logic(arr):
+    """
+    Loop through the list until you find a value which has a number one lower than the current number.
+    Need to start working on a small project while brushing up the concepts.
+    """
     all_dict = {}
 
     for _ in arr:
