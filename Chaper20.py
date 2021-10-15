@@ -61,14 +61,14 @@ def longest_sequence(arr):
     start_val = new_dict_sorted[0]
     max_l = len(new_dict_sorted)
     i = 1
-    current_longest_seq = 0
+    current_longest_seq = 1
     while i < max_l:
         if new_dict_sorted[i] == start_val + 1:
             current_longest_seq += 1
         else:
             if current_longest_seq > longest_sequence:
                 longest_sequence = current_longest_seq
-            current_longest_seq = 0
+            current_longest_seq = 1
         
         start_val = new_dict_sorted[i]
         i += 1
@@ -77,48 +77,37 @@ def longest_sequence(arr):
     print(new_dict_sorted)
 
 
-def new_logic(arr):
-    """
-    Loop through the list until you find a value which has a number one lower than the current number.
-    Need to start working on a small project while brushing up the concepts.
-    """
-    all_dict = {}
+def new_lng_seq(arr):
+    new_dict = {}
+    longest_sq = 0
 
-    for _ in arr:
-        all_dict[_] = 0
+    for i in arr:
+        new_dict[i]=True
 
-    max_so_far = 0
-    # for _ in arr:
-    #     if all_dict.get(_, 'no') != 'no':
-    #         all_dict[_] += 1
-    #         if all_dict.get(_+1, 'no') != 'no':
-    #             all_dict[_+1] = all_dict[_] + 1
+    for e in arr:
+        # A number lower than this does not exist.
+        if not new_dict.get(e-1, False):
+            current_sequence = 1 
+            current_number = e
 
-    for k, v in all_dict.items():
-        if v == 0:
-            all_dict[k] = 1
-
-        if all_dict.get(k+1, 'no') != 'no':
-            all_dict[k+1] = all_dict[k] + 1
-       
+            while new_dict.get(current_number+1, False):
+                current_sequence += 1
+                current_number += 1
 
 
-    for k, v in all_dict.items():
-        if v > max_so_far:
-            max_so_far = v
- 
-
-
-    print("New_Logic: ", all_dict)
-    print(max_so_far)
+            if current_sequence > longest_sq:
+                longest_sq = current_sequence
+    
+    print(f"New logic: {longest_sq}")
+    return longest_sq
 
 
 
+        
 
 
 if __name__ == '__main__':
     # print(temp_sort([98.6, 98.0, 99.0, 98.9, 95.5, 98.2, 98.0, 97.1]))
     # What i missed in the earlier implementation is that my algo does not respect duplicates.
     longest_sequence([13, 54, 50, 12, 14, 115])
-    new_logic([10, 5, 12, 3, 55, 30, 4, 11, 2])
-    new_logic([19, 13, 15, 12, 18, 14, 17, 11, 11])
+    new_lng_seq([13, 54, 50, 12, 14, 115])
