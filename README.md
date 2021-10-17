@@ -1,1 +1,1 @@
-Repo for tracking DS and Algo progress.
+This repo contains answered review questions from the book: A Common Sense Guide to Data Structures and Algorithms (Jay Wengrow)
