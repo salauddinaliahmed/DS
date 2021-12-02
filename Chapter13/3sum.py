@@ -1,0 +1,38 @@
+def threesum(arr):
+    arr.sort()
+    sorted_arr = arr
+
+    output = []
+    for i in range(len(arr)-2):
+        if i > 0 and arr[i] == arr[i-1]:
+            continue
+
+        l = i+1
+        r = len(arr)-1
+
+        while l < r:
+            currentsum = arr[i] + arr[l] + arr[r]
+
+            if currentsum == 0:
+                output.append([arr[i], arr[l], arr[r]])
+            
+                # Because its a sorted list.
+                while l < r and arr[l] == arr[l+1]:
+                    l += 1
+                while l < r and arr[r] == arr[r-1]:
+                    r -= 1
+
+                l += 1
+                r -= 1
+
+            elif currentsum < 0:
+                l += 1
+            
+            else:
+                r -= 1
+
+    return output
+
+
+if __name__ == '__main__':
+    print(threesum([-1, 0, 1, 2, -1, 4]))
