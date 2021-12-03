@@ -34,5 +34,34 @@ def threesum(arr):
     return output
 
 
+def new_same_sum(nums, k):
+    # h = {}
+    # for i, j in enumerate(nums):
+    #     if j in h:
+    #         h[j].append(i)
+    #     else:
+    #         h[j] = [i]
+        
+    # # indexes of 2+ nos.
+    # result = False
+    # for v in h.values():
+    #     if len(v) > 1:
+    #         t = 0
+    #         while t < len(v)-1:
+    #             if abs(v[t]-v[t+1]) <= k:
+    #                 return True
+    #             t += 1
+                
+    # return False
+    h = {}
+    for i, j in enumerate(nums):
+        if j in h and abs(i-h[j]) <= k:
+            return True
+        h[j] = i
+    return False
+
+
+
 if __name__ == '__main__':
-    print(threesum([-1, 0, 1, 2, -1, 4]))
+    # print(threesum([-1, 0, 1, 2, -1, 4]))
+    print(new_same_sum([1,2,3,1,2,3], 2))
