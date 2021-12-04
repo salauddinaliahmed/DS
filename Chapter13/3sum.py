@@ -60,8 +60,39 @@ def new_same_sum(nums, k):
         h[j] = i
     return False
 
+# Taken from leetcode for debugging.
+def addTwoNumbers(l1, l2):
+    carry = 0
+    root = n = ListNode(0)
+    while l1 or l2 or carry:
+        v1 = v2 = 0
+        if l1:
+            v1 = l1.val
+            l1 = l1.next
+        if l2:
+            v2 = l2.val
+            l2 = l2.next
+        carry, val = divmod(v1+v2+carry, 10)
+        n.next = ListNode(val)
+        n = n.next
+    return root.next
 
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+    def __str__(self) -> str:
+        s = ''
+        curr = self
+        while curr:
+            s += f'->{curr.val}'
+            curr = curr.next
+        return s
 
 if __name__ == '__main__':
     # print(threesum([-1, 0, 1, 2, -1, 4]))
-    print(new_same_sum([1,2,3,1,2,3], 2))
+    l1 = ListNode(9, next=ListNode(9, next=ListNode(9)))
+    l2 = ListNode(1, next=ListNode(0, next=ListNode(0)))
+
+    print(addTwoNumbers(l1,l2))
